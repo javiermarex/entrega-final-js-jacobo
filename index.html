@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Productos</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Imagen de portada -->
+    <div class="w-full">
+        <img src="img/Corralon-Zona-Sur-Distribuidora-Materiales-Para-Construccion-Img-1.jpg" alt="Corralón Zona Sur" class="w-full object-cover" style="height: 500px;">
+    </div>
+    <div class="container mx-auto p-4">
+        <h1 class="text-2xl font-bold mb-4 mb-12 w-full flex justify-center">TIENDA DE PRODUCTOS</h1>
+        
+        <!-- Botón para ver el carrito -->
+        <button id="verCarrito" class="bg-blue-500 text-white px-4 py-2 mt-4 mb-8">Ver Carrito</button>
+        
+        <div id="productos" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+        
+        <!-- Modal del carrito -->
+        <div id="modalCarrito" class="hidden fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-center items-center">
+            <div class="bg-white p-8 rounded-lg w-2/3">
+                <h2 class="text-xl font-bold mb-4">Carrito de Compras</h2>
+                <ul id="itemsCarrito"></ul>
+                <button id="finalizarPedido" class="bg-green-500 text-white px-4 py-2 mt-4">Finalizar Pedido</button>
+                <button id="cerrarCarrito" class="bg-red-500 text-white px-4 py-2 mt-4">Cerrar</button>
+            </div>
+        </div>
+        
+        <!-- Modal de pedido -->
+        <div id="modalPedido" class="hidden fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-center items-center">
+            <div class="bg-white p-8 rounded-lg w-2/3">
+                <h2 class="text-xl font-bold mb-4">Datos del Pedido</h2>
+                <form id="formularioPedido">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" class="border w-full p-2 mb-2" required>
+                    <label for="telefono">Teléfono:</label>
+                    <input type="text" id="telefono" class="border w-full p-2 mb-2" required>
+                    <label for="correo">Email:</label>
+                    <input type="email" id="correo" class="border w-full p-2 mb-2" required>
+                    <label for="entrega">¿Retiro o Envío?</label>
+                    <select id="entrega" class="border w-full p-2 mb-2">
+                        <option value="retiro">Retiro</option>
+                        <option value="envio">Envío</option>
+                    </select>
+                    <label for="pago">Forma de pago:</label>
+                    <select id="pago" class="border w-full p-2 mb-2">
+                        <option value="efectivo">Efectivo</option>
+                        <option value="tarjeta">Tarjeta</option>
+                        <option value="transferencia">Transferencia</option>
+                    </select>
+                    <label for="mensaje">Mensaje extra:</label>
+                    <textarea id="mensaje" class="border w-full p-2 mb-2"></textarea>
+                    <button type="button" id="enviarWhatsApp" class="bg-green-500 text-white px-4 py-2">Enviar por WhatsApp</button>
+                    <button type="button" id="enviarEmail" class="bg-blue-500 text-white px-4 py-2 ml-2">Enviar por Email</button>
+                    <button type="button" class="bg-gray-500 text-white px-4 py-2 ml-2" id="cerrarFormularioBtn">Cerrar</button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Paginación -->
+        <div id="paginacion" class="mt-4 mb-8 w-full flex justify-center flex-wrap"></div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-300 text-base py-8 mx-4 md:mx-0">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 text-center">
+            <!-- Primera columna: Logo y descripción -->
+            <div class="flex flex-col items-center">
+                <a href="/index.html">
+                    <img src="img/Logo.png" alt="Corralón Zona Sur" class="w-32 h-auto mb-4">
+                </a>
+                <p class="text-sm">
+                    Corralón Zona Sur es su proveedor de confianza en materiales para la construcción. Ofrecemos una amplia gama de productos con la mejor calidad.
+                </p>
+            </div>
+            <!-- Segunda columna: Datos de contacto -->
+            <div class="flex flex-col items-center">
+                <h3 class="text-lg font-bold mb-4">Datos de Contacto</h3>
+                <ul>
+                    <li class="mb-2"><strong>Teléfono:</strong> <a href="tel:0111234567"> +54 011 123 4567</a></li>
+                    <li class="mb-2"><strong>Dirección:</strong> <a href="https://maps.app.goo.gl/PC7gs8UozyzkQrbb7">Av. Principal 123, Neuquén</a></li>
+                    <li class="mb-2"><strong>Email:</strong> <a href="mailto:contacto@corralonzonasur.com">contacto@corralonzonasur.com</a></li>
+                </ul>
+            </div>
+            <!-- Tercera columna: Google Maps -->
+            <div class="flex flex-col items-center">
+                <h3 class="text-lg font-bold mb-4">Ubicación</h3>
+                <div class="w-full flex justify-center">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105073.45340230828!2d-58.51569871523056!3d-34.61565477005235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca3b4ef90cbd%3A0xa0b3812e88e88e87!2sBuenos%20Aires%2C%20Cdad.%20Aut%C3%B3noma%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1729080731698!5m2!1ses!2sar" width="90%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="./js/app.js"></script>
+</body>
+</html>
